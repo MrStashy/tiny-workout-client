@@ -1,0 +1,26 @@
+import Input from "./Input";
+
+export default function Form({ inputs, buttonText }) {
+  return (
+    <form className="flex flex-col text-white/50 font-extralight gap-2">
+      {inputs.map((input, index) => {
+        return (
+          <Input
+            key={index + "form"}
+            name={input.name}
+            label={input.label}
+            type={input.type}
+            placeholder={input.placeholder}
+          />
+        );
+      })}
+
+      <button
+        className="bg-tiny-orange w-login-form h-login-form text-white font-semibold mt-6 rounded-full"
+        type="submit"
+      >
+        {buttonText}
+      </button>
+    </form>
+  );
+}
