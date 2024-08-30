@@ -2,6 +2,7 @@ import Form from "../components/Form";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { validateRegisterCredentials } from "../utils/validationFunctions";
+import { createUser } from "../utils/apiFunctions";
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -41,12 +42,8 @@ export default function Register() {
     const { username, password, email } = formData;
     try {
       await validateRegisterCredentials(username, password, email);
-      setInputs(
-        inputs.map((input) => ({
-          ...input,
-          error: "",
-        }))
-      );
+      console.log("here")
+      console.log(await createUser(formData))
     } catch (e) {
       const updatedInputs = inputs.map((input) => {
         if (e[input.name]) {
@@ -81,7 +78,7 @@ export default function Register() {
       <p className="text-xs text-white/50 font-light mt-1">
         Already registered?
         <Link to="/sign-in" className="text-tiny-orange">
-          Sign in
+           Sign in
         </Link>
       </p>
     </main>

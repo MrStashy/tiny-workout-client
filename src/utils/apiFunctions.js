@@ -18,5 +18,17 @@ async function getUserByEmail(email) {
     return false;
   }
 
+async function createUser(userDetails) {
+  const response = await fetch(url + "users/", {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json' 
+    },
+    body: JSON.stringify(userDetails)
+  })
+  const json = await response.json()
+  console.log(json)
+}
 
-export { getUserByUsername, getUserByEmail };
+
+export { getUserByUsername, getUserByEmail, createUser };
