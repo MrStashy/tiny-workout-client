@@ -35,11 +35,9 @@ export default function SignIn() {
         },
         body: JSON.stringify(formData)
       })
-
       if(!response.ok) {
         console.log('log in failed')
       }
-    
   }
 
   function onChange(e) {

@@ -3,7 +3,6 @@ import Input from "./Input";
 
 export default function Form({ inputs, buttonText, onSubmit, onChange }) {
 
-
   return (
     <form onSubmit={onSubmit} className="flex flex-col text-white/50 font-extralight gap-2">
       {inputs.map((input, index) => {
@@ -15,6 +14,7 @@ export default function Form({ inputs, buttonText, onSubmit, onChange }) {
             label={input.label}
             type={input.type}
             placeholder={input.placeholder}
+            error={input.error}
           />
         );
       })}
