@@ -1,5 +1,5 @@
 import Form from "../components/Form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { validateRegisterCredentials } from "../utils/validationFunctions";
 import { createUser } from "../utils/apiFunctions";
@@ -36,14 +36,15 @@ export default function Register() {
       error: "",
     },
   ]);
+  const navigate = useNavigate()
 
   async function onSubmit(e) {
     e.preventDefault();
     const { username, password, email } = formData;
     try {
       await validateRegisterCredentials(username, password, email);
-      console.log("here")
-      console.log(await createUser(formData))
+      await createUser(formData)
+      navigate("/user-details")
     } catch (e) {
       const updatedInputs = inputs.map((input) => {
         if (e[input.name]) {

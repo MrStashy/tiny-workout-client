@@ -27,7 +27,7 @@ async function createUser(userDetails) {
     body: JSON.stringify(userDetails)
   })
   const json = await response.json()
-  console.log(json)
+  return json
 }
 
 

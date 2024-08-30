@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import SignIn from "./pages/SignIn";
 import Register from "./pages/Register";
+import UserDetails from "./pages/UserDetails";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/user-details" element={<UserDetails />} />
         </Routes>
       </div>
     </div>
