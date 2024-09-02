@@ -40,8 +40,6 @@ async function validateRegisterCredentials(username, password, email) {
     if (Object.keys(errors).length > 0) {
         throw errors
     }
-
-  return true
 }
 
 export { validateRegisterCredentials };

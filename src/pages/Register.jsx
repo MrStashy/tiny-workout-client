@@ -43,7 +43,8 @@ export default function Register() {
     const { username, password, email } = formData;
     try {
       await validateRegisterCredentials(username, password, email);
-      await createUser(formData)
+      const user = await createUser(formData)
+      localStorage.set('Token', user.token)
       navigate("/user-details")
     } catch (e) {
       const updatedInputs = inputs.map((input) => {
