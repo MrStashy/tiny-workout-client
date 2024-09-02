@@ -43,8 +43,8 @@ export default function Register() {
     const { username, password, email } = formData;
     try {
       await validateRegisterCredentials(username, password, email);
-      const user = await createUser(formData)
-      localStorage.set('Token', user.token)
+      const data = await createUser(formData)
+      localStorage.setItem('Token', data.user.token)
       navigate("/user-details")
     } catch (e) {
       const updatedInputs = inputs.map((input) => {
@@ -78,7 +78,7 @@ export default function Register() {
         buttonText="Register"
       />
       <p className="text-xs text-white/50 font-light mt-1">
-        Already registered?
+        Already registered?{' '}
         <Link to="/sign-in" className="text-tiny-orange">
            Sign in
         </Link>

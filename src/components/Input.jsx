@@ -10,7 +10,7 @@ export default function Input({name, type, placeholder, label, onChange, error})
 
     return (
         <div className="flex flex-col mb-2">
-        <label htmlFor={name} className="mb-1">{label}</label>
+        <label htmlFor={name} className="mb-1 ml-4">{label}</label>
         <input
           className={style}
           onChange={onChange}
