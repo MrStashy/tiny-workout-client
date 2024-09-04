@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Form from "../components/Form";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -5,6 +6,8 @@ import { validateRegisterCredentials } from "../utils/validationFunctions";
 import { createUser } from "../utils/apiFunctions";
 
 export default function Register({ setJustRegistered }) {
+
+
   const [formData, setFormData] = useState({
     email: "",
     username: "",

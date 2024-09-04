@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 export default function SignIn() {
+
   const [formData, setFormData] = useState({
     email: "",
     password: ""
@@ -36,7 +37,7 @@ export default function SignIn() {
         body: JSON.stringify(formData)
       })
       if(!response.ok) {
-        console.log('log in failed')
+        console.error('log in failed')
       }
   }
 
