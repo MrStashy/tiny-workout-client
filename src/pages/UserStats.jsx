@@ -3,7 +3,7 @@ import { validateUserDetails } from "../utils/validationFunctions";
 import Form from "../components/Form";
 import { jwtDecode } from "jwt-decode";
 import { createProfile } from "../utils/apiFunctions";
-import { useNavigate } from "react-router-dom";
+
 
 export default function UserDetails() {
   const [formData, setFormData] = useState({
