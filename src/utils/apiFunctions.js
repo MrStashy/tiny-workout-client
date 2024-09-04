@@ -31,6 +31,7 @@ async function createUser(userDetails) {
 }
 
 async function createProfile(userId, stats) {
+  
   const response = await fetch(url + "stats/" + userId.toString(), {
     method: 'POST', 
     headers: {
@@ -38,7 +39,6 @@ async function createProfile(userId, stats) {
     },
     body: JSON.stringify(stats)
   })
-
   const json = await response.json()
   return json
 }

@@ -3,6 +3,7 @@ import { validateUserDetails } from "../utils/validationFunctions";
 import Form from "../components/Form";
 import { jwtDecode } from "jwt-decode";
 import { createProfile } from "../utils/apiFunctions";
+import { useNavigate } from "react-router-dom";
 
 export default function UserDetails() {
   const [formData, setFormData] = useState({
@@ -49,7 +50,9 @@ export default function UserDetails() {
       const data = await createProfile(id, formData)
       if (data.error) {
         console.error(data.error)
+        return
       }
+      navigate("/dashboard")
     } catch (e) {
       const updatedInputs = inputs.map((input) => {
         if (e[input.name]) {
