@@ -4,7 +4,7 @@ import { useState } from "react";
 import { validateRegisterCredentials } from "../utils/validationFunctions";
 import { createUser } from "../utils/apiFunctions";
 
-export default function Register() {
+export default function Register({ setJustRegistered }) {
   const [formData, setFormData] = useState({
     email: "",
     username: "",
@@ -44,7 +44,12 @@ export default function Register() {
     try {
       await validateRegisterCredentials(username, password, email);
       const data = await createUser(formData)
+      if (data.error) {
+        console.error(data.error)
+      }
+      
       localStorage.setItem('Token', data.user.token)
+      setJustRegistered(true)
       navigate("/user-details")
     } catch (e) {
       const updatedInputs = inputs.map((input) => {
@@ -63,7 +68,7 @@ export default function Register() {
     setFormData({ ...formData, [name]: value });
     setInputs((prevInputs) =>
       prevInputs.map((input) =>
-        input.name === name ? { ...input, error: false } : input
+        input.name === name ? { ...input, error: "" } : input
       )
     );
   }

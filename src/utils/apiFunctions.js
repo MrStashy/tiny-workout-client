@@ -30,5 +30,18 @@ async function createUser(userDetails) {
   return json
 }
 
+async function createProfile(userId, stats) {
+  const response = await fetch(url + "stats/" + userId.toString(), {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json' 
+    },
+    body: JSON.stringify(stats)
+  })
 
-export { getUserByUsername, getUserByEmail, createUser };
+  const json = await response.json()
+  return json
+}
+
+
+export { getUserByUsername, getUserByEmail, createUser, createProfile};
