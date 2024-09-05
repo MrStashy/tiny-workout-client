@@ -4,7 +4,7 @@ const ToggleButton = ({ button1, button2, inHeader, setMode }) => {
   const [activeToggle, setActiveToggle] = useState("button2");
 
   return (
-    <div className="relative w-80 h-16 bg-gray-300/20 rounded-full p-1 mr-10">
+    <div className="relative w-80 h-16 bg-gray-300/20 rounded-full p-1">
       <div
         className={`absolute top-1 bottom-1 w-[calc(50%-0.25rem)] rounded-full bg-tiny-orange transition-transform duration-300 ${
           activeToggle === "button1" ? "translate-x-0" : "translate-x-full"

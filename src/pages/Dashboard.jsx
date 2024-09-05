@@ -1,4 +1,8 @@
+import StatsWindow from "./StatsWindow"
+import WorkoutWindow from "./WorkoutWindow"
+
 export default function Dashboard({mode}) {
+
   
 
     if (mode === "stats")
@@ -6,7 +10,7 @@ export default function Dashboard({mode}) {
         <StatsWindow />
     )
 
-    if (mode === "stats")
+    if (mode === "workout")
     return (
         <WorkoutWindow />
     )

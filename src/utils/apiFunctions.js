@@ -43,5 +43,14 @@ async function createProfile(userId, stats) {
   return json
 }
 
+async function getNamedExercisesByUserId (userId, exercise) {
+  const response = await fetch(url + "workouts/" + userId + "/" + exercise)
+  if (response.ok) {
+    const json = await response.json();
+    return json;
+  }
+  return false;
+}
 
-export { getUserByUsername, getUserByEmail, createUser, createProfile};
+
+export { getUserByUsername, getUserByEmail, createUser, createProfile, getNamedExercisesByUserId };
