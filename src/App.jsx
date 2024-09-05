@@ -10,12 +10,13 @@ import { ProtectedRoute } from "./context/ProtectedRoute";
 
 function App() {
   const [justRegistered, setJustRegistered] = useState(false);
+  const [mode, setMode] = useState("stats")
 
   return (
     <UserProvider>
       <div className="h-screen bg-app-bg bg-cover">
         <div className="h-screen flex flex-col absolute inset-0 bg-gradient-to-b from-tiny-orange/30 to-transparent  font-inter">
-          <Header />
+          <Header setMode={setMode} />
           <Routes>
             <Route path="/sign-in" element={<SignIn />} />
             <Route
@@ -29,7 +30,7 @@ function App() {
               path="/dashboard"
               element={
                 <ProtectedRoute>
-                  <Dashboard />
+                  <Dashboard mode={mode}/>
                 </ProtectedRoute>
               }
             />

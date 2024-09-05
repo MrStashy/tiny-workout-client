@@ -1,7 +1,13 @@
-export default function Dashboard() {
-    
+export default function Dashboard({mode}) {
+  
 
+    if (mode === "stats")
     return (
-        <p>dashboard</p>
+        <StatsWindow />
+    )
+
+    if (mode === "stats")
+    return (
+        <WorkoutWindow />
     )
 }
