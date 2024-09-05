@@ -1,15 +1,15 @@
-import StatLi from "./StatLi"
+import LatestExerciseStatLi from "./LatestExerciseStatLi";
 
-export default function StatsCard({exerciseData}) {
-    console.log(exerciseData)
+export default function StatsCard({ exerciseData }) {
+
+  function latestExercise() {
+    const sortedExercises = exerciseData.toSorted((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
     
-    return (
-        <ul>
-            {exerciseData.map((exercise, index) => {
-                return(
-                    <StatLi key={index + exercise.name} exercise={exercise}/>
-                )
-            })}
-        </ul>
-    )
+    const latestExercise = sortedExercises[0]
+    return latestExercise
+  }
+
+  return <ul>
+    <LatestExerciseStatLi latestExercise={latestExercise()} />
+  </ul>;
 }
