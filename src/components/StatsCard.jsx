@@ -1,16 +1,10 @@
 import LatestExerciseStatLi from "./stats-card-lis/LatestExerciseStatLi";
-import ExerciseAvg from "./stats-card-lis/ExerciseAvg";
+import ExerciseAvgFrequencyLi from "./stats-card-lis/ExerciseAvgFrequencyLi";
 
 export default function StatsCard({ exerciseData }) {
 
-  function latestExercise() {
-    const sortedExercises = exerciseData.toSorted((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
-    const latestExercise = sortedExercises[0]
-    return latestExercise
-  }
-
   return (<ul>
-    <LatestExerciseStatLi latestExercise={latestExercise()} />
-    <ExerciseAvg />
+    <LatestExerciseStatLi exerciseData={exerciseData} />
+    <ExerciseAvgFrequencyLi exerciseData={exerciseData}/>
   </ul>)
 }
