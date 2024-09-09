@@ -43,8 +43,8 @@ export default function ChartsCard({ exerciseData }) {
         <XAxis
           dataKey="name"
           tick={{ fontSize: 12 }}
-          axisLine={{ stroke: "#6B7280" }}
-          tickLine={{ stroke: "#6B7280" }}
+          axisLine={{ stroke: "#D06010" }}
+          tickLine={{ stroke: "#D06010" }}
         />
         <YAxis
           label={{
@@ -54,12 +54,12 @@ export default function ChartsCard({ exerciseData }) {
             fontSize: 12,
             offset: -10,
             dy: 70,
-            fill: "#6B7280"
+            fill: "#6B7280",
           }}
           domain={["dataMin", "dataMax"]}
           tick={{ fontSize: 12 }}
-          axisLine={{ stroke: "#6B7280" }}
-          tickLine={{ stroke: "#6B7280" }}
+          axisLine={{ stroke: "#D06010" }}
+          tickLine={{ stroke: "#D06010" }}
         />
         <Tooltip />
         <Line

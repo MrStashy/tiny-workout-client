@@ -10,7 +10,7 @@ export default function StatsWindow() {
   const [selectedExercise, setSelectedExercise] = useState("");
   const [exerciseData, setExerciseData] = useState({});
   const [exerciseNames, setExerciseNames] = useState([])
-  const [statsMode, setStatsMode] = useState("charts")
+  const [statsMode, setStatsMode] = useState("stats")
   const { currentUser } = useContext(UserContext);
 
   async function updateExerciseData() {
@@ -42,7 +42,7 @@ export default function StatsWindow() {
   }
 
   return (
-    <main className="bg-white h-full my-4 mx-8 rounded-xl flex flex-col items-center">
+    <main className="bg-white h-full mb-4 mx-8 rounded-xl flex flex-col items-center">
       <div className="mt-10">
         <select onChange={handleChange} value={selectedExercise}>
         {exerciseNames.map((exerciseName, index) => {
