@@ -15,14 +15,14 @@ export default function ExerciseAvgFrequencyLi({exerciseData}) {
     
         const averageDifference = differences.reduce((acc, diff) => acc + diff, 0) / differences.length;
     
-       return averageDifference
+       return Math.floor(averageDifference)
     }
 
     const exerciseName = formatExerciseName(exerciseData[0].name)
 
     return (
         <li className="bg-slate-200 mt-2 rounded-lg px-10 py-2 flex flex-col shadow-lg">
-            <p className="text-sm">You're currently doing this exercise {getExerciseFrequency() === 1.00 ? "every day.": `every ${getExerciseFrequency()} days.`}</p>
+            <p className="text-sm place-self-center">You're currently doing this exercise {getExerciseFrequency() === 1.00 ? "every day.": `every ${getExerciseFrequency()} days.`}</p>
         </li>
     )
 }
