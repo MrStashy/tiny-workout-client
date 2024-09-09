@@ -3,8 +3,6 @@ import WorkoutWindow from "./WorkoutWindow"
 
 export default function Dashboard({mode}) {
 
-  
-
     if (mode === "stats")
     return (
         <StatsWindow />

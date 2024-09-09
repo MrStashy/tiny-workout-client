@@ -44,7 +44,16 @@ async function createProfile(userId, stats) {
 }
 
 async function getNamedExercisesByUserId (userId, exercise) {
-  const response = await fetch(url + "workouts/" + userId + "/" + exercise)
+  const response = await fetch(url + "exercises/" + userId + "/" + exercise)
+  if (response.ok) {
+    const json = await response.json();
+    return json;
+  }
+  return false;
+}
+
+async function getAllExerciseNamesByUserId (userId) {
+  const response = await fetch(url + "exercises/" + userId)
   if (response.ok) {
     const json = await response.json();
     return json;
@@ -53,4 +62,4 @@ async function getNamedExercisesByUserId (userId, exercise) {
 }
 
 
-export { getUserByUsername, getUserByEmail, createUser, createProfile, getNamedExercisesByUserId };
+export { getUserByUsername, getUserByEmail, createUser, createProfile, getNamedExercisesByUserId, getAllExerciseNamesByUserId };
