@@ -10,7 +10,7 @@ export default function StatsWindow() {
   const [selectedExercise, setSelectedExercise] = useState("");
   const [exerciseData, setExerciseData] = useState({});
   const [exerciseNames, setExerciseNames] = useState([])
-  const [statsMode, setStatsMode] = useState("stats")
+  const [statsMode, setStatsMode] = useState("charts")
   const { currentUser } = useContext(UserContext);
 
   async function updateExerciseData() {

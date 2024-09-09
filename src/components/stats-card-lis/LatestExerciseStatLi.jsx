@@ -10,7 +10,7 @@ export default function LatestExerciseStatLi({ exerciseData }) {
   }
 
   function latestExercise() {
-    const sortedExercises = exerciseData.toSorted((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+    const sortedExercises = exerciseData.toSorted((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     const latestExercise = sortedExercises[0]
     return latestExercise
   }
