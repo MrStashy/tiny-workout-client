@@ -3,7 +3,9 @@ import React, { useState } from "react";
 const ToggleButton = ({ button1, button2, inHeader, setMode }) => {
   const [activeToggle, setActiveToggle] = useState("button2");
 
-  const style = inHeader ? "relative w-80 h-16 bg-gray-300/20 rounded-full p-1 mr-2" : "relative w-80 h-16 bg-gray-300/20 rounded-full p-1"
+  const style = inHeader
+    ? "relative w-80 h-16 bg-gray-300/20 rounded-full p-1 mr-10"
+    : "relative w-80 h-16 bg-gray-300/20 rounded-full p-1";
 
   return (
     <div className={style}>
@@ -19,9 +21,8 @@ const ToggleButton = ({ button1, button2, inHeader, setMode }) => {
         }`}
         onClick={() => {
           setActiveToggle("button1");
-          if (inHeader) {
-            setMode(button1.toLowerCase());
-          }
+
+          setMode(button1.toLowerCase());
         }}
       >
         {button1}
@@ -33,9 +34,8 @@ const ToggleButton = ({ button1, button2, inHeader, setMode }) => {
         }`}
         onClick={() => {
           setActiveToggle("button2");
-          if (inHeader) {
-            setMode(button2.toLowerCase());
-          }
+
+          setMode(button2.toLowerCase());
         }}
       >
         {button2}

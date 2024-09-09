@@ -1,5 +1,5 @@
 export default function EstimatedOneRepMax({ exerciseData }) {
-  console.log(exerciseData);
+
 
   function findHeaviestSet() {
     let currentMostWeightMoved = 0;

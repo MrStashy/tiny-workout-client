@@ -1,8 +1,6 @@
 import formatExerciseName from "../../utils/formatExerciseName";
 
 export default function ExerciseAvgFrequencyLi({exerciseData}) {
-    console.log(exerciseData)
-
     function getExerciseFrequency() {
         const datesArr = exerciseData.map((exercise) => 
             new Date(exercise.sets[0].createdAt).getTime() / 86400000
@@ -17,8 +15,6 @@ export default function ExerciseAvgFrequencyLi({exerciseData}) {
     
        return Math.floor(averageDifference)
     }
-
-    const exerciseName = formatExerciseName(exerciseData[0].name)
 
     return (
         <li className="bg-slate-200 mt-2 rounded-lg px-10 py-2 flex flex-col shadow-lg">
