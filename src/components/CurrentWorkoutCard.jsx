@@ -4,24 +4,25 @@ import { useState, useRef } from "react";
 
 
 export default function CurrentWorkoutCard() {
-    const [currentExercises, setCurrentExercsises] = useState([])
+    const [currentExercises, setCurrentExercises] = useState([])
     const idCount = useRef(0)
 
     function handleAddNewExerciseClick() {
         idCount.current ++
         emptyExercise.id = idCount.current
-        setCurrentExercsises([...currentExercises, emptyExercise])
+        setCurrentExercises([...currentExercises, emptyExercise])
     }
 
     function handleDeleteExerciseClick(incomingExercise) {
-        const filteredExercises = currentExercises.filter((exercise) => exercise.id !== incomingExercise.id)
-        setCurrentExercsises(filteredExercises)
+        const filteredExercises = currentExercises.filter((exercise) => exercise.id !== setCurrentExercises.id)
+        setCurrentExercises(currentExercises.filter((exercise) => exercise.id !== incomingExercise.id))
     }
 
     const emptyExercise = {
             name: "",
             sets: []
         }
+
 
     return (
         <section className="bg-slate-200 h-full w-full rounded-lg flex flex-col place-items-center overflow-auto">
