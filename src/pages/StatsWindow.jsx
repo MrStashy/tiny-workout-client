@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from "react";
 import ToggleButtons from "../components/ToggleButtons";
 import { UserContext } from "../context/UserContext";
 import { getNamedExercisesByUserId, getAllExerciseNamesByUserId } from "../utils/apiFunctions";
-import DropdownOption from "../components/DropdownOption";
 import DropDownMenu from "../components/DropDownMenu";
 import StatsCard from "../components/StatsCard";
 import ChartsCard from "../components/ChartsCard";
@@ -39,20 +38,12 @@ export default function StatsWindow() {
   }, [selectedExercise]);
 
 
-  function handleChange(e) {
-    setSelectedExercise(e.target.value);
-  }
 
   return (
     <main className="bg-white h-full mb-4 mx-8 rounded-xl flex flex-col items-center">
-     
-      <select onChange={handleChange} value={selectedExercise} className="bg-slate-200 w-48 p-2 rounded-md my-10">
-  {exerciseNames.map((exerciseName, index) => {
-    return <DropdownOption key={"dropdown" + index} exerciseName={exerciseName} />
-  })}
-</select>
+  
 
-      <DropDownMenu />
+      <DropDownMenu dataArr={exerciseNames} selectedOption={selectedExercise} setSelectedOption={setSelectedExercise}/>
 
       <div className="flex-grow">
        {exerciseData.length > 0 && statsMode === "stats" && <StatsCard exerciseData={exerciseData} />}

@@ -19,8 +19,6 @@ export default function TotalWeightMoved({ exerciseData }) {
         let roundedNum;
 
       roundedNum < 1000 ? roundedNum = Math.round(totalWeight / 1000) * 1000 : roundedNum = Math.round(totalWeight / 5000) * 5000
-
-     console.log(roundedNum)   
      
         return weightMap[roundedNum]
     }
