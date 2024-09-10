@@ -1,6 +1,6 @@
-import formatExerciseName from "../utils/formatExerciseName";
 import { useState, useRef, useEffect } from "react";
 import DropdownOptionV2 from "./DropdownOptionV2";
+import formatExerciseName from "../utils/formatExerciseName";
 
 export default function DropDownMenu({
   dataArr,
@@ -22,7 +22,6 @@ export default function DropDownMenu({
       } else {
         document.removeEventListener('mousedown', handleClickOutside);
       }
-  
       return () => {
         document.removeEventListener('mousedown', handleClickOutside);
       };
@@ -38,9 +37,8 @@ export default function DropDownMenu({
    setDropdownOpen(!dropdownOpen)
   }
 
-
   return (
-    <div className="relative my-10" ref={dropdownRef}>
+    <div className="relative" ref={dropdownRef}>
       <button
         onClick={handleClick}
         className="flex place-items-center w-52 bg-slate-100 hover:bg-slate-200 justify-between p-4 rounded-md"
@@ -57,7 +55,7 @@ export default function DropDownMenu({
       </button>
 
       {dropdownOpen && (
-        <div className="absolute bg-white w-52 flex flex-col items-center text-center rounded-lg border py-2 z-50">
+        <div className="absolute bg-white w-52 flex flex-col items-center text-center rounded-lg border border-tiny-orange py-2 z-50">
           {dataArr.map((item, index) => {
             if (item === selectedOption) return;
             return (

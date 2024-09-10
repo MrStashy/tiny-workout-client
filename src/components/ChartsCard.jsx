@@ -1,5 +1,5 @@
 import { LineChart, Line, XAxis, YAxis, Tooltip } from "recharts";
-import formatDateForGraph from "../utils/formatDateForGraph";
+import formatDate from "../utils/formatDate";
 
 export default function ChartsCard({ exerciseData }) {
   function createChartData() {
@@ -14,7 +14,7 @@ export default function ChartsCard({ exerciseData }) {
         runningTotal += sets[j].weight * sets[j].reps;
       }
       dataArr.push({
-        name: formatDateForGraph(createdAt),
+        name: formatDate(createdAt),
         weight: runningTotal / 10000,
       });
     }
