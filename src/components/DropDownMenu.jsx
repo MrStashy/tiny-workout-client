@@ -1,5 +1,5 @@
 import formatExerciseName from "../utils/formatExerciseName";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import DropdownOptionV2 from "./DropdownOptionV2";
 
 export default function DropDownMenu({
@@ -7,7 +7,27 @@ export default function DropDownMenu({
   selectedOption,
   setSelectedOption,
 }) {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+   const [dropdownOpen, setDropdownOpen] = useState(false);
+   const dropdownRef = useRef(null);
+ 
+   const handleClickOutside = (event) => {
+     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+       setDropdownOpen(false);
+     }
+   };
+
+   useEffect(() => {
+      if (dropdownOpen) {
+        document.addEventListener('mousedown', handleClickOutside);
+      } else {
+        document.removeEventListener('mousedown', handleClickOutside);
+      }
+  
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, [dropdownOpen]);
+  
 
   function handleClick() {
     setDropdownOpen(!dropdownOpen);
@@ -20,7 +40,7 @@ export default function DropDownMenu({
 
 
   return (
-    <div className="relative my-10">
+    <div className="relative my-10" ref={dropdownRef}>
       <button
         onClick={handleClick}
         className="flex place-items-center w-52 bg-slate-100 hover:bg-slate-200 justify-between p-4 rounded-md"
