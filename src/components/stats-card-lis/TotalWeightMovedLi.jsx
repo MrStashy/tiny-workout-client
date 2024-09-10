@@ -1,3 +1,5 @@
+import weightMap from "../../utils/weightMap"
+
 export default function TotalWeightMoved({ exerciseData }) {
 
 
@@ -14,24 +16,12 @@ export default function TotalWeightMoved({ exerciseData }) {
 
 
     function getCorrespondingWeight(totalWeight) {
-        const roundedNum = Math.round(totalWeight / 1000) * 1000
+        let roundedNum;
 
-        if(roundedNum > 10000) return "a ridiculous amount of weight"
+      roundedNum < 1000 ? roundedNum = Math.round(totalWeight / 1000) * 1000 : roundedNum = Math.round(totalWeight / 5000) * 5000
 
-        const weightMap = {
-            0: "getting higher!",
-            1000: "the same as a sedan car",
-            2000: "the same as a large male giraffe",
-            3000: "the same as a medium-sized excavator",
-            4000: "the same as a small boat",
-            5000: "the same as a large whale shark",
-            6000: "the same as a fully grown male lion",
-            7000: "the same as a large adult hippo",
-            8000: "the same as a fully grown adult bison",
-            9000: "the same as a large shipping container",
-            10000: "the same as a large bull elephant"
-        };
-
+     console.log(roundedNum)   
+     
         return weightMap[roundedNum]
     }
 

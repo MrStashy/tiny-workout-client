@@ -3,8 +3,10 @@ import ToggleButtons from "../components/ToggleButtons";
 import { UserContext } from "../context/UserContext";
 import { getNamedExercisesByUserId, getAllExerciseNamesByUserId } from "../utils/apiFunctions";
 import DropdownOption from "../components/DropdownOption";
+import DropDownMenu from "../components/DropDownMenu";
 import StatsCard from "../components/StatsCard";
 import ChartsCard from "../components/ChartsCard";
+
 
 export default function StatsWindow() {
   const [selectedExercise, setSelectedExercise] = useState("");
@@ -12,6 +14,7 @@ export default function StatsWindow() {
   const [exerciseNames, setExerciseNames] = useState([])
   const [statsMode, setStatsMode] = useState("stats")
   const { currentUser } = useContext(UserContext);
+
 
   async function updateExerciseData() {
     const data = await getNamedExercisesByUserId(1, selectedExercise); //Set at 1 for debugging
@@ -33,7 +36,6 @@ export default function StatsWindow() {
     if (exerciseNames.length > 0) {
       updateExerciseData();
     }
-    
   }, [selectedExercise]);
 
 
@@ -43,13 +45,15 @@ export default function StatsWindow() {
 
   return (
     <main className="bg-white h-full mb-4 mx-8 rounded-xl flex flex-col items-center">
-      <div className="mt-10">
-        <select onChange={handleChange} value={selectedExercise}>
-        {exerciseNames.map((exerciseName, index) => {
-          return <DropdownOption key={"dropdown" + index} exerciseName={exerciseName} />
-        })}
-        </select>
-      </div>
+     
+      <select onChange={handleChange} value={selectedExercise} className="bg-slate-200 w-48 p-2 rounded-md my-10">
+  {exerciseNames.map((exerciseName, index) => {
+    return <DropdownOption key={"dropdown" + index} exerciseName={exerciseName} />
+  })}
+</select>
+
+      <DropDownMenu />
+
       <div className="flex-grow">
        {exerciseData.length > 0 && statsMode === "stats" && <StatsCard exerciseData={exerciseData} />}
        {exerciseData.length > 0 && statsMode === "charts" && <ChartsCard exerciseData={exerciseData} />}          
