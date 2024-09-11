@@ -61,5 +61,23 @@ async function getAllExerciseNamesByUserId (userId) {
   return false;
 }
 
+async function submitWorkout (userId, workout) {
+ 
 
-export { getUserByUsername, getUserByEmail, createUser, createProfile, getNamedExercisesByUserId, getAllExerciseNamesByUserId };
+  const response = await fetch(url + "workouts/" + userId, {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json' 
+    },
+    body: JSON.stringify(workout)
+  })
+  
+  if (response.ok) {
+    const json = await response.json();
+    return json;
+  }
+  return false
+}
+
+
+export { getUserByUsername, getUserByEmail, createUser, createProfile, getNamedExercisesByUserId, getAllExerciseNamesByUserId, submitWorkout };

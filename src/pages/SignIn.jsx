@@ -39,6 +39,7 @@ export default function SignIn() {
       if(!response.ok) {
         console.error('log in failed')
       }
+      console.log(response.body)
   }
 
   function onChange(e) {

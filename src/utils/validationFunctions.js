@@ -103,4 +103,16 @@ function validateDate(date) {
   return true;
 }
 
-export { validateRegisterCredentials, validateUserDetails };
+function validateWorkout(workout) {
+  if (workout.length === 0) {
+    throw "You can't submit a workout with no exercises"
+  }
+
+  console.log(workout)
+  if(!workout.every((exercise) => exercise.name !== "Choose exercise")) {
+    throw "You haven't chosen every exercise's name"
+  }
+
+}
+
+export { validateRegisterCredentials, validateUserDetails, validateWorkout };
