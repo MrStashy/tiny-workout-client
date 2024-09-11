@@ -1,8 +1,7 @@
 import { useState } from "react";
 
 export default function SetBar({ set, handleDeleteSetClick, setNumber }) {
-//   const [reps, setReps] = useState(0);
-//   const [weight, setWeight] = useState(0);
+
   const [setData, setSetData] = useState({reps: "", weight: ""})
 
   function handleChange(e) {
@@ -30,6 +29,7 @@ export default function SetBar({ set, handleDeleteSetClick, setNumber }) {
           name="weight"
           type="text-box"
           placeholder="0"
+          autoComplete="off"
         />
         <p>kg</p>
       </div>
@@ -42,6 +42,7 @@ export default function SetBar({ set, handleDeleteSetClick, setNumber }) {
           name="reps"
           type="text-box"
           placeholder="0"
+          autoComplete="off"
         />
       </div>
       <img
@@ -49,7 +50,6 @@ export default function SetBar({ set, handleDeleteSetClick, setNumber }) {
         className="h-5 place-self-center cursor-pointer"
         src="src/assets/SVG/delete-1-svgrepo-com.svg"
       />
-      <p>{set.id}</p>
     </div>
   );
 }

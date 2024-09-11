@@ -39,7 +39,7 @@ export default function StatsWindow() {
   }, [selectedExercise]);
 
   return (
-    <main className="bg-white h-full mb-4 mx-8 rounded-xl flex flex-col items-center">
+    <main className="bg-white h-full mb-4 mx-8 rounded-xl flex flex-col items-center p-8 gap-4">
       <DropDownMenu
         dataArr={exerciseNames}
         selectedOption={selectedExercise}
@@ -54,7 +54,7 @@ export default function StatsWindow() {
           <ChartsCard exerciseData={exerciseData} />
         )}
       </div>
-      <div className="mb-10">
+      <div>
         <ToggleButtons
           button1={"Charts"}
           button2={"Stats"}

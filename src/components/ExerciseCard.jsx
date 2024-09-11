@@ -5,7 +5,7 @@ import SetBar from "./SetBar"
 
 
 export default function ExerciseCard({ exercise, handleDeleteExerciseClick }) {
-const [selectedExercise, setSelectedExercise] = useState("")
+const [selectedExercise, setSelectedExercise] = useState("Choose exercise")
 const [currentSets, setCurrentSets] = useState([])
 const idCount = useRef(0)
 
