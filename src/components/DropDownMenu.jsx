@@ -55,7 +55,7 @@ export default function DropDownMenu({
       </button>
 
       {dropdownOpen && (
-        <div className="absolute bg-white w-52 flex flex-col items-center text-center rounded-lg border border-tiny-orange py-2 z-50">
+        <div className="absolute bg-white w-52 flex flex-col items-center text-center rounded-lg border border-tiny-orange py-2 z-50 max-h-52 overflow-auto">
           {dataArr.map((item, index) => {
             if (item === selectedOption) return;
             return (

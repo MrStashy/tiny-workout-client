@@ -10,7 +10,7 @@ export default function WorkoutWindow() {
    
 
   return (
-    <main className="bg-white h-full mb-4 mx-8 rounded-xl flex flex-col items-center justify-between p-8 gap-8">
+    <main className="bg-white h-full max-h-full mb-4 mx-8 rounded-xl flex flex-col items-center justify-between p-8 gap-8">
    
         {mode === "history" && <WorkoutHistoryCard />
         }

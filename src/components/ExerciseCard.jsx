@@ -21,17 +21,12 @@ function handleNewSetClick() {
 }
 
 function handleDeleteSetClick(incomingSet) {
-    console.log("Incoming Set To Delete :", incomingSet)
-    console.log("Current sets according to exercise object: ", exercise.sets)
-
     const filteredSets = currentSets.filter((set) => set.id !== incomingSet.id)
-    console.log("Sets after being filtered in function: ", filteredSets)
    
     exercise.sets = filteredSets
     setCurrentSets((prev) => prev.filter((set) => set.id !== incomingSet.id))
 }
 
-console.log("Out of function current sets by state: ", currentSets)
     return (
         <article className="bg-tiny-orange p-4 flex flex-col place-items-center rounded-lg justify-between gap-2">
         <header className="relative flex justify-center w-full">
