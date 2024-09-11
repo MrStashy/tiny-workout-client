@@ -4,18 +4,19 @@ import { useState, useRef } from "react";
 
 
 export default function CurrentWorkoutCard() {
-    const [currentExercises, setCurrentExercises] = useState([])
+    const [workoutExercises, setWorkoutExercises] = useState([])
     const idCount = useRef(0)
 
     function handleAddNewExerciseClick() {
         idCount.current ++
         emptyExercise.id = idCount.current
-        setCurrentExercises([...currentExercises, emptyExercise])
+
+        setWorkoutExercises([...workoutExercises, emptyExercise])
     }
 
     function handleDeleteExerciseClick(incomingExercise) {
-        const filteredExercises = currentExercises.filter((exercise) => exercise.id !== setCurrentExercises.id)
-        setCurrentExercises(currentExercises.filter((exercise) => exercise.id !== incomingExercise.id))
+
+        setWorkoutExercises((prev) => prev.filter((exercise) => exercise.id !== incomingExercise.id))
     }
 
     const emptyExercise = {
@@ -28,10 +29,10 @@ export default function CurrentWorkoutCard() {
         <section className="bg-slate-200 h-full w-full rounded-lg flex flex-col place-items-center overflow-auto">
             <p className="rounded-md text-slate-400">{getDate()}</p>
             <ul className="flex-grow w-10/12 flex flex-col gap-2">
-            {currentExercises.length > 0 && 
-                currentExercises.map((exercise, index) => {
+            {workoutExercises.length > 0 && 
+                workoutExercises.map((exercise, index) => {
                 return (
-                    <ExerciseCard key={index + "exercise"} exercise={exercise} handleDeleteExerciseClick={handleDeleteExerciseClick}/>
+                    <ExerciseCard key={exercise.id} exercise={exercise} handleDeleteExerciseClick={handleDeleteExerciseClick}/>
                 )
             })
             }
