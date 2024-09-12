@@ -5,9 +5,9 @@ export default function SetBar({ set, handleDeleteSetClick, setNumber }) {
   const [setData, setSetData] = useState({reps: "", weight: ""})
 
   function handleChange(e) {
-    const { name, value } = e.target;
+    let { name, value } = e.target;
 
-    if (isNaN(Number(value)) || value.length > 3) {
+    if (isNaN(Number(value)) || value.length > 4) {
       return;
     }
 
