@@ -87,6 +87,22 @@ async function getWorkoutsByIdPaginated(userId, pageNo, perPage) {
   return false
 }
 
+async function login (userDetails) {
+  const response = await fetch(url + "login", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json', 
+        },
+        body: JSON.stringify(userDetails)
+      })
+
+      if(!response.ok) {
+        throw "Log in failed"
+      }
+
+      const { token } = await response.json()
+      localStorage.setItem('Token', token)
+}
 
 
-export { getUserByUsername, getUserByEmail, createUser, createProfile, getNamedExercisesByUserId, getAllExerciseNamesByUserId, submitWorkout, getWorkoutsByIdPaginated };
+export { getUserByUsername, getUserByEmail, createUser, createProfile, getNamedExercisesByUserId, getAllExerciseNamesByUserId, submitWorkout, getWorkoutsByIdPaginated, login };

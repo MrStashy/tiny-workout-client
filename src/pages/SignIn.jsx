@@ -1,8 +1,11 @@
 import Form from "../components/Form";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { login } from "../utils/apiFunctions";
+import { useNavigate } from "react-router-dom";
 
 export default function SignIn() {
+  const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
     email: "",
@@ -28,18 +31,12 @@ export default function SignIn() {
 
   async function onSubmit(e) {
     e.preventDefault();
-
-      const response = await fetch('http://localhost:3000/login', {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json', 
-        },
-        body: JSON.stringify(formData)
-      })
-      if(!response.ok) {
-        console.error('log in failed')
-      }
-      console.log(response.body)
+    try {
+      await login(formData)
+      navigate("/dashboard")
+    } catch(e) {
+      console.log(e)
+    }
   }
 
   function onChange(e) {
