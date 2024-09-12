@@ -4,7 +4,7 @@ const ToggleButton = ({ button1, button2, inHeader, setMode }) => {
   const [activeToggle, setActiveToggle] = useState("button2");
 
   const style = inHeader
-    ? "relative w-80 h-16 bg-gray-300/20 rounded-full p-1 mr-10"
+    ? "relative w-80 h-16 bg-gray-300/20 rounded-full p-1"
     : "relative w-80 h-16 bg-gray-300/20 rounded-full p-1";
 
   return (
