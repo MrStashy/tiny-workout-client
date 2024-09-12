@@ -10,7 +10,7 @@ export default function DropDownMenu({
    const [dropdownOpen, setDropdownOpen] = useState(false);
    const dropdownRef = useRef(null);
  
-   const handleClickOutside = (event) => {
+   function handleClickOutside (event) {
      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
        setDropdownOpen(false);
      }
