@@ -44,13 +44,15 @@ export default function UserDetails() {
 
   async function onSubmit(e) {
     e.preventDefault();
-
     const { id } = jwtDecode(localStorage.getItem("Token"))
-    const { height, weight, dob } = formData;
+    const stats = {...formData}
+    stats.dob = stats.dob.split("/").reverse().join("-")
+   
+    const { height, weight, dob } = stats
 
     try {
       validateUserDetails(height, weight, dob);
-      const data = await createProfile(id, formData)
+      const data = await createProfile(id, stats)
       if (data.error) {
         console.error(data.error)
         return

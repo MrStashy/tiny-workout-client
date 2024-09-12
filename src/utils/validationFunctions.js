@@ -18,21 +18,25 @@ async function validateRegisterCredentials(username, password, email) {
   if (!errors.email) {
     const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!pattern.test(email)) {
-      errors.email = "Email invalid";
+      errors.email = "Invalid email";
     }
   }
 
   if (!errors.email) {
-    const foundUserByEmail = await getUserByEmail(email);
-    if (foundUserByEmail) {
-      errors.email = "User already exists with that email address";
-    }
+    try {
+      const foundUserByEmail = await getUserByEmail(email);
+      if (foundUserByEmail) {
+        errors.email = "User already exists with that email address";
+      }
+    } catch (e) {
+      console.log(e)
+    }   
   }
 
   if (!errors.username) {
     const foundUserByUsername = await getUserByUsername(username);
     if (foundUserByUsername) {
-      errors.username = "That username is already taken";
+      errors.username = "That username is taken";
     }
   }
 
@@ -82,20 +86,17 @@ function validateUserDetails(height, weight, dob) {
 }
 
 function validateDate(date) {
-  if (date.length !== 10) {
+  const parsedDate = new Date(date);
+
+  if (isNaN(parsedDate.getTime())) {
     return false;
   }
 
-  if (isNaN(Number(date.replaceAll("/", "")))) {
-    return false;
-  }
-
-  const [day, month, year] = date.split("/");
-  const formattedDate = new Date(year, month - 1, day);
+  const [year, month, day] = date.split("-");
   if (
-    formattedDate.getFullYear() !== parseInt(year, 10) ||
-    formattedDate.getMonth() !== month - 1 ||
-    formattedDate.getDate() !== parseInt(day, 10)
+    parsedDate.getFullYear() !== parseInt(year, 10) ||
+    parsedDate.getMonth() + 1 !== parseInt(month, 10) ||
+    parsedDate.getDate() !== parseInt(day, 10)
   ) {
     return false;
   }
