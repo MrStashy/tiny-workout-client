@@ -62,8 +62,6 @@ async function getAllExerciseNamesByUserId (userId) {
 }
 
 async function submitWorkout (userId, workout) {
- 
-
   const response = await fetch(url + "workouts/" + userId, {
     method: 'POST', 
     headers: {
@@ -79,5 +77,16 @@ async function submitWorkout (userId, workout) {
   return false
 }
 
+async function getWorkoutsByIdPaginated(userId, pageNo, perPage) {
+  const response = await fetch(url + "workouts/paginated/" + userId + `?perPage=${perPage}&pageNo=${pageNo}`)
 
-export { getUserByUsername, getUserByEmail, createUser, createProfile, getNamedExercisesByUserId, getAllExerciseNamesByUserId, submitWorkout };
+  if (response.ok) {
+    const json = await response.json();
+    return json
+  }
+  return false
+}
+
+
+
+export { getUserByUsername, getUserByEmail, createUser, createProfile, getNamedExercisesByUserId, getAllExerciseNamesByUserId, submitWorkout, getWorkoutsByIdPaginated };
