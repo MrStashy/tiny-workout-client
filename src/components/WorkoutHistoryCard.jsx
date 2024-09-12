@@ -1,6 +1,7 @@
 import { useEffect, useContext, useState } from "react"
 import { UserContext } from "../context/UserContext.jsx";
 import { getWorkoutsByIdPaginated } from "../utils/apiFunctions.js";
+import PaginationModule from "./PaginationModule.jsx";
 import formatDate from "../utils/formatDate.js"
 
 export default function WorkoutHistoryCard() {
@@ -24,7 +25,7 @@ export default function WorkoutHistoryCard() {
     }
 
     return (
-        <section className="bg-slate-200 w-full h-full max-h-[620px] rounded-lg flex flex-col place-items-center p-4 gap-4 overflow-auto">
+        <section className="bg-slate-200 w-full h-full max-h-[620px] rounded-lg flex flex-col place-items-center p-4 gap-4">
         <p className="rounded-md text-slate-400">Workout History</p>
         <ul className="flex flex-col gap-2">
         {pageOfWorkouts.length > 0 && pageOfWorkouts.map((workout) => {
@@ -33,9 +34,7 @@ export default function WorkoutHistoryCard() {
             )
         })}
         </ul>
-        <div>
-            pagination
-        </div>
+       <PaginationModule pageNo={pageNo} setPageNo={setPageNo}/>
       </section>
     )
 }
