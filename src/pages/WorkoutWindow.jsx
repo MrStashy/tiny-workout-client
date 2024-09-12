@@ -4,7 +4,7 @@ import CurrentWorkoutCard from "../components/CurrentWorkoutCard"
 import { useState } from "react";
 
 export default function WorkoutWindow() {
-    const [mode, setMode] = useState("current")
+    const [mode, setMode] = useState("history")
 
 
    
@@ -17,7 +17,7 @@ export default function WorkoutWindow() {
 
         {mode === "current" && <CurrentWorkoutCard />
         }
-      <ToggleButton button1={"Current"} button2={"History"} setMode={setMode} />
+      <ToggleButton button1={"Current"} button2={"History"} setMode={setMode} mode={mode}/>
 
 
       </main>

@@ -64,7 +64,7 @@ function WorkoutDetails({workout}) {
                         <p className="bg-tiny-orange text-white rounded-md p-1">{formatExerciseName(exercise.name)}</p>
                         {exercise.sets.map((set, index) => {
                             return (
-                                <ul key={set.id} className="flex flex-row gap-4 justify-between">
+                                <ul key={set.id} className="flex flex-row gap-4 justify-between text-slate-500">
                                 <li >Set {index + 1}</li>
                                 <li>{set.weight /1000} kg</li>
                                 <li>Reps: {set.reps}</li>
