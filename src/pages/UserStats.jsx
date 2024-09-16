@@ -6,8 +6,9 @@ import { createProfile } from "../utils/apiFunctions";
 import { useNavigate } from "react-router-dom";
 
 
-export default function UserDetails() {
+export default function UserDetails({setJustRegistered}) {
   const navigate = useNavigate()
+  const [submitSuccess, setSubmitSuccess] = useState() 
 
   const [formData, setFormData] = useState({
     height: 0,
@@ -57,6 +58,8 @@ export default function UserDetails() {
         console.error(data.error)
         return
       }
+      setSubmitSuccess(true)
+      setJustRegistered(false)
       navigate("/dashboard")
     } catch (e) {
       const updatedInputs = inputs.map((input) => {

@@ -11,7 +11,6 @@ async function getUserByUsername(username) {
 }
 
 async function getUserByEmail(email) {
-
     const response = await fetch(url + "users/email/" + email);
     if (response.ok) {
       const json = await response.json();

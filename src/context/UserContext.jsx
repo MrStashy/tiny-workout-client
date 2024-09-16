@@ -4,12 +4,13 @@ import { jwtDecode } from "jwt-decode";
 
 const UserContext = createContext();
 
-function UserProvider({ children }) {
+function UserProvider({ children, justRegistered }) {
   const [currentUser, setCurrentUser] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("Token");
+    console.log("The token is:", token)
 
     if (token) {
       const decodedToken = jwtDecode(token);
@@ -17,7 +18,7 @@ function UserProvider({ children }) {
     }
 
     setLoading(false)
-  }, []);
+  }, [justRegistered]);
 
   return (
     <UserContext.Provider value={{ currentUser, setCurrentUser, loading }}>
