@@ -41,7 +41,7 @@ export default function StatsWindow() {
 
   return (
     <main className="bg-white h-full mb-4 mx-8 rounded-xl flex flex-col items-center p-8 gap-4">
-    {exerciseNames.length === 0 && <p className="bg-slate-200 p-4 rounded-lg">Hit the gym to generate stats!</p>}
+    {exerciseNames.length === 0 && <p className="bg-slate-200 p-4 rounded-lg shadow-md text-tiny-orange">Hit the gym to generate stats!</p>}
     {exerciseNames.length > 0 && 
       <>
       <DropDownMenu

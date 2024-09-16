@@ -16,6 +16,10 @@ export default function ExerciseAvgFrequencyLi({exerciseData}) {
        return Math.floor(averageDifference)
     }
 
+    if (isNaN(getExerciseFrequency())) {
+        return
+    }
+
     return (
         <li className="bg-slate-200 mt-2 rounded-lg px-10 py-2 flex flex-col shadow-lg">
             <p className="text-sm place-self-center">On average, you're currently doing this exercise {getExerciseFrequency() === 1.00 ? "every day.": `every ${getExerciseFrequency()} days.`}</p>

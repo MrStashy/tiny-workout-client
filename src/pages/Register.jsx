@@ -8,8 +8,6 @@ import LoadingSpinner from "../components/LoadingSpinner";
 
 export default function Register({ setJustRegistered }) {
   const [submitting, setSubmitting] = useState(false)
-
-
   const [formData, setFormData] = useState({
     email: "",
     username: "",
