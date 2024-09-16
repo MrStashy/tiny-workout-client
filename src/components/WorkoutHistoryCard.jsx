@@ -45,7 +45,7 @@ export default function WorkoutHistoryCard() {
                 </li>
             )
         })}
-        {pageOfWorkouts.length === 0 && <p>No workouts!</p>}
+        {pageOfWorkouts.length === 0 && <p>No workouts yet!</p>}
         </ul>
        <PaginationModule pageNo={pageNo} setPageNo={setPageNo} workoutsOnPage={pageOfWorkouts.length}/>
       </section>

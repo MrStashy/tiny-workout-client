@@ -31,7 +31,7 @@ export default function StatsWindow() {
 
   useEffect(() => {
     updateExerciseNames();
-  }, [exerciseData]);
+  }, []);
 
   useEffect(() => {
     if (exerciseNames.length > 0) {
@@ -39,13 +39,11 @@ export default function StatsWindow() {
     }
   }, [selectedExercise]);
 
-  if (exerciseNames.length === 0) {
-    return (
-      <p> No exercises</p>    )
-  }
-
   return (
     <main className="bg-white h-full mb-4 mx-8 rounded-xl flex flex-col items-center p-8 gap-4">
+    {exerciseNames.length === 0 && <p className="bg-slate-200 p-4 rounded-lg">Hit the gym to generate stats!</p>}
+    {exerciseNames.length > 0 && 
+      <>
       <DropDownMenu
         dataArr={exerciseNames}
         selectedOption={selectedExercise}
@@ -67,6 +65,7 @@ export default function StatsWindow() {
           setMode={setStatsMode}
         />
       </div>
+      </>}
     </main>
   );
 }

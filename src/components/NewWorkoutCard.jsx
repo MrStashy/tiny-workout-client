@@ -1,4 +1,4 @@
-import ExerciseCard from "./ExerciseCard";
+import ExerciseCard from "./ExerciseCard.jsx";
 import getDate from "../utils/getDate.js";
 import { submitWorkout } from "../utils/apiFunctions.js";
 import { useState, useRef } from "react";
