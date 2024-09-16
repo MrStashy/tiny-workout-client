@@ -30,7 +30,6 @@ export default function WorkoutHistoryCard() {
         setClickedWorkoutId(Number(e.target.id))
     }
 
-    console.log(clickedWorkoutId)
     return (
         <section className="bg-slate-200 w-full h-full max-h-[620px] rounded-lg flex flex-col place-items-center justify-between p-4 gap-4 overflow-auto">
         <p className="rounded-md text-slate-400">Workout History</p>

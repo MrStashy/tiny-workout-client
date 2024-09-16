@@ -10,7 +10,6 @@ function UserProvider({ children, justRegistered }) {
 
   useEffect(() => {
     const token = localStorage.getItem("Token");
-    console.log("The token is:", token)
 
     if (token) {
       const decodedToken = jwtDecode(token);

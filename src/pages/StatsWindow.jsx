@@ -16,27 +16,33 @@ export default function StatsWindow() {
   const [statsMode, setStatsMode] = useState("stats");
   const { currentUser } = useContext(UserContext);
 
+
   async function updateExerciseData() {
-    const data = await getNamedExercisesByUserId(1, selectedExercise); //Set at 1 for debugging
+    const data = await getNamedExercisesByUserId(currentUser.id, selectedExercise);
     const { exercises } = data;
     setExerciseData(exercises);
   }
 
   async function updateExerciseNames() {
-    const data = await getAllExerciseNamesByUserId(1); //Set at 1 for debugging
+    const data = await getAllExerciseNamesByUserId(currentUser.id); 
     setExerciseNames(data.exercises);
     setSelectedExercise(data.exercises[0]);
   }
 
   useEffect(() => {
     updateExerciseNames();
-  }, []);
+  }, [exerciseData]);
 
   useEffect(() => {
     if (exerciseNames.length > 0) {
       updateExerciseData();
     }
   }, [selectedExercise]);
+
+  if (exerciseNames.length === 0) {
+    return (
+      <p> No exercises</p>    )
+  }
 
   return (
     <main className="bg-white h-full mb-4 mx-8 rounded-xl flex flex-col items-center p-8 gap-4">

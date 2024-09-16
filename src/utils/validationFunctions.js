@@ -109,7 +109,6 @@ function validateWorkout(workout) {
     throw "You can't submit a workout with no exercises"
   }
 
-  console.log(workout)
   if(!workout.every((exercise) => exercise.name !== "Choose exercise")) {
     throw "You haven't chosen every exercise's name"
   }

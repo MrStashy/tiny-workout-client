@@ -12,7 +12,12 @@ export default function SetBar({ set, handleDeleteSetClick, setNumber }) {
     }
 
     setSetData({...setData, [name]: value})
-    set[name] = (value);
+    
+    if (name === "weight") {
+      set.weight = value * 1000
+    } else {
+      set.reps = value
+    }
   }
 
   return (
