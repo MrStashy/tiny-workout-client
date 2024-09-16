@@ -4,8 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { validateRegisterCredentials } from "../utils/validationFunctions";
 import { createUser } from "../utils/apiFunctions";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 export default function Register({ setJustRegistered }) {
+  const [submitting, setSubmitting] = useState(false)
 
 
   const [formData, setFormData] = useState({
@@ -42,6 +44,7 @@ export default function Register({ setJustRegistered }) {
   const navigate = useNavigate()
 
   async function onSubmit(e) {
+    setSubmitting(true)
     e.preventDefault();
     const { username, password, email } = formData;
     try {
@@ -50,7 +53,6 @@ export default function Register({ setJustRegistered }) {
       if (data.error) {
         console.error(data.error)
       }
-      
       localStorage.setItem('Token', data.user.token)
       setJustRegistered(true)
       navigate("/user-details")
@@ -59,7 +61,7 @@ export default function Register({ setJustRegistered }) {
         if (e[input.name]) {
           return { ...input, error: e[input.name] };
         } else {
-          return { ...input, error: false };
+          return { ...input, error: "" };
         }
       });
       setInputs(updatedInputs);
@@ -77,20 +79,23 @@ export default function Register({ setJustRegistered }) {
   }
 
   return (
-    <main className="flex-grow flex flex-col items-center justify-center">
-      <p className="text-white text-2xl font-semibold mb-4">Register</p>
+    <main className="flex-grow flex flex-col items-center justify-center gap-4">
+      <p className="text-white text-2xl font-semibold">Register</p>
+      <div>
       <Form
         onSubmit={onSubmit}
         onChange={onChange}
         inputs={inputs}
         buttonText="Register"
       />
-      <p className="text-xs text-white/50 font-light mt-1">
+      <p className="text-xs text-white/50 font-light text-center">
         Already registered?{' '}
         <Link to="/sign-in" className="text-tiny-orange">
            Sign in
         </Link>
       </p>
+      </div>
+     {submitting && <LoadingSpinner />} 
     </main>
   );
 }

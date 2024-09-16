@@ -1,5 +1,21 @@
 import { getUserByUsername, getUserByEmail } from "./apiFunctions";
 
+async function validateSignInCredentials(email, password) {
+  const errors = {};
+
+  if (!email) {
+    errors.email = "Email cannot be empty";
+  }
+
+  if (!password) {
+    errors.password = "Password cannot be empty";
+  }
+
+  if (Object.keys(errors).length > 0) {
+    throw errors;
+  }
+}
+
 async function validateRegisterCredentials(username, password, email) {
   const errors = {};
 
@@ -115,4 +131,4 @@ function validateWorkout(workout) {
 
 }
 
-export { validateRegisterCredentials, validateUserDetails, validateWorkout };
+export { validateRegisterCredentials, validateUserDetails, validateWorkout, validateSignInCredentials };

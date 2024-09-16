@@ -42,6 +42,7 @@ export default function CurrentWorkoutCard() {
         setWorkoutExercises([])
     } catch (e) {
         console.error(e)
+        throw "Unable to save workout"
     }
   }
 

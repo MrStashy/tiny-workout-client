@@ -4,11 +4,12 @@ import Form from "../components/Form";
 import { jwtDecode } from "jwt-decode";
 import { createProfile } from "../utils/apiFunctions";
 import { useNavigate } from "react-router-dom";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 
 export default function UserDetails({setJustRegistered}) {
   const navigate = useNavigate()
-  const [submitSuccess, setSubmitSuccess] = useState() 
+  const [submitting, setSubmitting] = useState(false)
 
   const [formData, setFormData] = useState({
     height: 0,
@@ -45,6 +46,7 @@ export default function UserDetails({setJustRegistered}) {
 
   async function onSubmit(e) {
     e.preventDefault();
+    setSubmitting(true)
     const { id } = jwtDecode(localStorage.getItem("Token"))
     const stats = {...formData}
     stats.dob = stats.dob.split("/").reverse().join("-")
@@ -58,8 +60,7 @@ export default function UserDetails({setJustRegistered}) {
         console.error(data.error)
         return
       }
-      setSubmitSuccess(true)
-      setJustRegistered(false)
+      
       navigate("/dashboard")
     } catch (e) {
       const updatedInputs = inputs.map((input) => {
@@ -84,14 +85,15 @@ export default function UserDetails({setJustRegistered}) {
   }
 
   return (
-    <main className="flex-grow flex flex-col items-center justify-center">
-      <p className="text-white text-2xl font-semibold mb-4">Your Stats</p>
+    <main className="flex-grow flex flex-col items-center justify-center gap-4">
+      <p className="text-white text-2xl font-semibold">Your Stats</p>
       <Form
         inputs={inputs}
         onSubmit={onSubmit}
         onChange={onChange}
         buttonText="Submit"
       />
+      {submitting && <LoadingSpinner />}
     </main>
   );
 }
