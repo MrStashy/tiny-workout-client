@@ -1,12 +1,15 @@
 import ToggleButton from "./ToggleButtons";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
+import { UserContext } from "../context/UserContext.jsx";
 
 export default function Header({ setMode }) {
   const [avatarClicked, setAvatarClicked] = useState(false)
   const location = useLocation().pathname
   const dropdownRef = useRef(null);
   const navigate = useNavigate()
+
+  const username = useContext(UserContext).currentUser.username
  
    function handleClickOutside (event) {
      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -30,6 +33,7 @@ export default function Header({ setMode }) {
        localStorage.removeItem('Token')
        navigate("/sign-in")
     }
+    console.log(username)
 
   return (
     <header className="min-h-40 flex flex-row place-items-center justify-between px-10">
@@ -40,7 +44,11 @@ export default function Header({ setMode }) {
         <div ref={dropdownRef}>
         <img className="h-16 bg-gray-300/20 rounded-full p-2 cursor-pointer relative" src="src/assets/SVG/profile-avatar.svg" onClick={() => setAvatarClicked(!avatarClicked)}/>
         {avatarClicked && 
-        <button onClick={handleLogOutClick} className="absolute bg-white/70 rounded p-2 text-xs text-tiny-orange border">Log Out</button>
+        <div className="absolute bg-white/70 rounded p-2 text-xs text-tiny-orange border flex flex-col place-items-center">
+        <p className="font-bold">{username}</p>
+        <hr></hr>
+        <button onClick={handleLogOutClick}>Log Out</button>
+        </div>
         }
         </div>
         </div>
