@@ -10,6 +10,7 @@ export default function Header({ setMode }) {
   const navigate = useNavigate()
 
   const username = useContext(UserContext).currentUser.username
+
  
    function handleClickOutside (event) {
      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {

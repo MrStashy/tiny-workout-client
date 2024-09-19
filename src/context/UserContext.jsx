@@ -13,6 +13,7 @@ function UserProvider({ children, justRegistered }) {
 
     if (token) {
       const decodedToken = jwtDecode(token);
+      console.log(decodedToken)
       setCurrentUser(decodedToken);
     }
 

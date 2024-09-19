@@ -50,7 +50,7 @@ export default function StatsWindow() {
         setSelectedOption={setSelectedExercise}
       />
 
-      <div className="flex-grow">
+      <div className="flex-grow overflow-auto w-full">
         {exerciseData.length > 0 && statsMode === "stats" && (
           <StatsCard exerciseData={exerciseData} />
         )}
