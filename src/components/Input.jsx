@@ -29,7 +29,7 @@ export default function Input({
           placeholder={placeholder}
         />
         {constraints?.length > 0 && (
-          <ul className="absolute text-xs text-black rounded -right-44 -top-2 p-1 bg-white/60 w-auto">
+          <ul className="absolute text-xs text-black rounded -right-40 -top-2 p-1 bg-white/60 ">
             {constraints.map((constraint) => {
               return <li>{constraint}</li>;
             })}

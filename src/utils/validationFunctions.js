@@ -33,14 +33,21 @@ async function validateRegisterCredentials(username, password, confirmPassword, 
     errors.password = "Password cannot be empty";
   }
 
+  if(!errors.password) {
+    const regex = /^(?=.*[A-Z])(?=.*\d).{8,}$/
+    if(!regex.test(password)) {
+      errors.password = "Needs 8 chars, an uppercase letter, and a number"
+    }
+  }
+
   if(!errors.password && password !== confirmPassword) {
     errors.password = "Passwords don't match"
     errors.confirmPassword = "Passwords don't match"
   }
 
   if (!errors.email) {
-    const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!pattern.test(email)) {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!regex.test(email)) {
       errors.email = "Invalid email";
     }
   }

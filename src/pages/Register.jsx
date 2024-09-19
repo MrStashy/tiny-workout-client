@@ -37,7 +37,7 @@ export default function Register({ setJustRegistered }) {
       placeholder: "Password",
       value: formData.password,
       error: "",
-      constraints: ["Must be 8 characters long.", "Must include a capital letter.", "Must include a number."]
+      constraints: ["8+ characters long.", "Includes a capital letter.", "Includes a number."]
     },
     {
       name: "confirmPassword",
@@ -72,6 +72,8 @@ export default function Register({ setJustRegistered }) {
         }
       });
       setInputs(updatedInputs);
+    } finally {
+      setSubmitting(false)
     }
   }
 
