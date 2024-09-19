@@ -4,7 +4,7 @@ import Input from "./Input";
 export default function Form({ inputs, buttonText, onSubmit, onChange }) {
 
   return (
-    <form onSubmit={onSubmit} className="flex flex-col text-white/50 font-extralight gap-2">
+    <form onSubmit={onSubmit} className="flex flex-col text-white/50 font-extralight gap-4">
       {inputs.map((input, index) => {
         return (
           <Input
@@ -15,6 +15,7 @@ export default function Form({ inputs, buttonText, onSubmit, onChange }) {
             type={input.type}
             placeholder={input.placeholder}
             error={input.error}
+            constraints={input.constraints}
           />
         );
       })}

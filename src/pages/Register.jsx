@@ -37,6 +37,7 @@ export default function Register({ setJustRegistered }) {
       placeholder: "Password",
       value: formData.password,
       error: "",
+      constraints: ["Must be 8 characters long.", "Must include a capital letter.", "Must include a number."]
     },
     {
       name: "confirmPassword",

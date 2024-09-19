@@ -1,16 +1,26 @@
-export default function Input({name, type, placeholder, label, onChange, error}) {
+export default function Input({
+  name,
+  type,
+  placeholder,
+  label,
+  onChange,
+  error,
+  constraints,
+}) {
+  let style = "border w-login-form h-login-form rounded-full pl-4 text-tiny-orange placeholder-tiny-orange";
 
-  let style = "border w-login-form h-login-form rounded-full pl-4"
-  
   if (error) {
-    style += " bg-red-500/50"
+    style += " bg-red-500/50";
   } else {
-    style += " bg-white/20"
+    style += " bg-white/60";
   }
 
-    return (
-        <div className="flex flex-col mb-2">
-        <label htmlFor={name} className="mb-1 ml-4">{label}</label>
+  return (
+    <div className="flex flex-col">
+      <label htmlFor={name} className="ml-4">
+        {label}
+      </label>
+      <div className="relative">
         <input
           className={style}
           onChange={onChange}
@@ -18,7 +28,18 @@ export default function Input({name, type, placeholder, label, onChange, error})
           type={type}
           placeholder={placeholder}
         />
-        <p className="bg-white/80 text-red-500 place-self-center px-2 text-xs rounded-b-md">{error}</p>
-        </div>
-    )
+        {constraints?.length > 0 && (
+          <ul className="absolute text-xs text-black rounded -right-44 -top-2 p-1 bg-white/60 w-auto">
+            {constraints.map((constraint) => {
+              return <li>{constraint}</li>;
+            })}
+          </ul>
+        )}
+      </div>
+      <p className="bg-white/80 text-red-500 place-self-center px-2 text-xs rounded-b-md">
+        {error}
+      </p>
+    </div>
+  );
 }
+
