@@ -1,5 +1,5 @@
 const weightMap = {
-    0: "getting higher!",
+    0: "only going upwards",
     1000: "the same as a sedan car",
     2000: "the same as a large male giraffe",
     3000: "the same as a medium-sized excavator",

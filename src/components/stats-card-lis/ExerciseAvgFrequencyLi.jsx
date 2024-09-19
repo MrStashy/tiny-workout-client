@@ -16,7 +16,7 @@ export default function ExerciseAvgFrequencyLi({exerciseData}) {
        return Math.floor(averageDifference)
     }
 
-    if (isNaN(getExerciseFrequency())) {
+    if (isNaN(getExerciseFrequency()) || getExerciseFrequency() === 0) {
         return
     }
 

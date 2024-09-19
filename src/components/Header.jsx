@@ -41,7 +41,7 @@ export default function Header({ setMode }) {
         <div className="flex flex-row place-items-center gap-2">
         <ToggleButton button1={"Workout"} button2={"Stats"} inHeader={true} setMode={setMode} />
         <div ref={dropdownRef}>
-        <img className="h-16 bg-gray-300/20 rounded-full p-2 cursor-pointer relative" src="src/assets/SVG/profile-avatar.svg" onClick={() => setAvatarClicked(!avatarClicked)}/>
+        <img className="h-12 bg-gray-300/20 rounded-full p-2 cursor-pointer relative" src="src/assets/SVG/profile-avatar.svg" onClick={() => setAvatarClicked(!avatarClicked)}/>
         {avatarClicked && 
         <div className="absolute bg-white/70 rounded p-2 text-xs text-tiny-orange border flex flex-col place-items-center">
         <p className="font-bold">{username}</p>

@@ -1,4 +1,4 @@
-import { LineChart, Line, XAxis, YAxis, Tooltip } from "recharts";
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import formatDate from "../utils/formatDate";
 
 export default function ChartsCard({ exerciseData }) {
@@ -25,10 +25,11 @@ export default function ChartsCard({ exerciseData }) {
   const data = createChartData();
 
   return (
-    <div className="bg-slate-200 mt-2 rounded-lg px-10 p-4 flex flex-col shadow-lg">
+    <div className="bg-slate-200 mt-2 rounded-lg px-10 p-4 flex flex-col max-h-full shadow-md">
       <p className="text-slate-500 place-self-center">
         Weight Moved in Last 5 Workouts
       </p>
+      <ResponsiveContainer>
       <LineChart
         width={500}
         height={300}
@@ -69,6 +70,7 @@ export default function ChartsCard({ exerciseData }) {
           activeDot={{ r: 8 }}
         />
       </LineChart>
+      </ResponsiveContainer>
     </div>
   );
 }
