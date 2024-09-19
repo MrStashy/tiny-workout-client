@@ -37,12 +37,12 @@ export default function Header({ setMode }) {
 
   return (
     <header className="min-h-40 flex flex-row place-items-center justify-between px-10">
-      <img className="h-logo w-logo ml-10" src="src/assets/SVG/logo.svg"></img>
+      <img className="h-logo w-logo ml-10" src="/svg/logo.svg"></img>
         {location === "/dashboard" && 
         <div className="flex flex-row place-items-center gap-2">
         <ToggleButton button1={"Workout"} button2={"Stats"} inHeader={true} setMode={setMode} />
         <div ref={dropdownRef}>
-        <img className="h-12 bg-gray-300/20 rounded-full p-2 cursor-pointer relative" src="src/assets/SVG/profile-avatar.svg" onClick={() => setAvatarClicked(!avatarClicked)}/>
+        <img className="h-12 bg-gray-300/20 rounded-full p-2 cursor-pointer relative" src="/svg/profile-avatar.svg" onClick={() => setAvatarClicked(!avatarClicked)}/>
         {avatarClicked && 
         <div className="absolute bg-white/70 rounded p-2 text-xs text-tiny-orange border flex flex-col place-items-center">
         <p className="font-bold">{username}</p>

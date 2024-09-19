@@ -16,7 +16,7 @@ export default {
         'logo': '43px'
       },
       backgroundImage: {
-        'app-bg': "url('src/assets/img/bg-image.JPG')"
+        'app-bg': "url('/img/bg-image.JPG')"
       },
       fontFamily: {
         'inter': ["Inter", "sans-serif"]

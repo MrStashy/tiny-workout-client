@@ -48,8 +48,8 @@ export default function DropDownMenu({
           className="h-4"
           src={
             !dropdownOpen
-              ? "src/assets/SVG/down-arrow-svgrepo-com.svg"
-              : "src/assets/SVG/up-arrow-svgrepo-com.svg"
+              ? "svg/down-arrow-svgrepo-com.svg"
+              : "svg/up-arrow-svgrepo-com.svg"
           }
         />
       </button>

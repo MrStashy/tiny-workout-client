@@ -59,7 +59,7 @@ async function validateRegisterCredentials(username, password, confirmPassword, 
         errors.email = "User already exists with that email address";
       }
     } catch (e) {
-      console.log(e)
+      console.error(e)
     }   
   }
 

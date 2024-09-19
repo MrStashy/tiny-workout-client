@@ -35,7 +35,7 @@ function handleDeleteSetClick(incomingSet) {
                 setSelectedOption={setSelectedExercise} 
                 selectedOption={selectedExercise}
             />
-            <img onClick={() => handleDeleteExerciseClick(exercise)} className="h-8 absolute top-0 right-0 cursor-pointer" src="src/assets/SVG/delete-1-svgrepo-com.svg" />
+            <img onClick={() => handleDeleteExerciseClick(exercise)} className="h-8 absolute top-0 right-0 cursor-pointer" src="svg/delete-1-svgrepo-com.svg" />
         </header>
         <section className="flex flex-col gap-2">
             {currentSets.length > 0 && 
@@ -47,7 +47,7 @@ function handleDeleteSetClick(incomingSet) {
             }
         </section>
         <footer onClick={handleNewSetClick} className="flex flex-col cursor-pointer">
-        <img className="h-8" src="src/assets/SVG/add-square-svgrepo-com.svg"/>
+        <img className="h-8" src="svg/add-square-svgrepo-com.svg"/>
         <p className="text-white">New Set</p>
         </footer>
     </article>
