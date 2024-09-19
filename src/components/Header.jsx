@@ -33,7 +33,6 @@ export default function Header({ setMode }) {
        localStorage.removeItem('Token')
        navigate("/sign-in")
     }
-    console.log(username)
 
   return (
     <header className="min-h-40 flex flex-row place-items-center justify-between px-10">

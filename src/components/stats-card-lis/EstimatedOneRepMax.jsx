@@ -8,12 +8,16 @@ export default function EstimatedOneRepMax({ exerciseData }) {
     let setsArr = [];
     exerciseData.forEach((exercise) => setsArr.push(exercise.sets));
     let flatArr = setsArr.flat();
+  
 
     for (let i = 0; i < flatArr.length; i++) {
       if (flatArr[i].reps * flatArr[i].weight > currentMostWeightMoved) {
         currentMostWeightMoved = flatArr[i].reps * flatArr[i].weight;
         heaviestSet = flatArr[i];
       }
+    }
+    if (Object.keys(heaviestSet).length === 0) {
+      return {weight: 0, reps: 0}
     }
     return heaviestSet;
   }
