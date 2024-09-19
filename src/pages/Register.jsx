@@ -38,15 +38,23 @@ export default function Register({ setJustRegistered }) {
       value: formData.password,
       error: "",
     },
+    {
+      name: "confirmPassword",
+      label: "Confirm Password",
+      type: "password",
+      placeholder: "Password",
+      value: formData.password,
+      error: "",
+    }
   ]);
   const navigate = useNavigate()
 
   async function onSubmit(e) {
     setSubmitting(true)
     e.preventDefault();
-    const { username, password, email } = formData;
+    const { username, password, confirmPassword, email } = formData;
     try {
-      await validateRegisterCredentials(username, password, email);
+      await validateRegisterCredentials(username, password, confirmPassword, email);
       const data = await createUser(formData)
       if (data.error) {
         console.error(data.error)

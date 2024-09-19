@@ -16,8 +16,10 @@ async function validateSignInCredentials(email, password) {
   }
 }
 
-async function validateRegisterCredentials(username, password, email) {
+async function validateRegisterCredentials(username, password, confirmPassword, email) {
   const errors = {};
+
+  
 
   if (!email) {
     errors.email = "Email cannot be empty";
@@ -29,6 +31,11 @@ async function validateRegisterCredentials(username, password, email) {
 
   if (!password) {
     errors.password = "Password cannot be empty";
+  }
+
+  if(!errors.password && password !== confirmPassword) {
+    errors.password = "Passwords don't match"
+    errors.confirmPassword = "Passwords don't match"
   }
 
   if (!errors.email) {
