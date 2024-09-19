@@ -1,7 +1,11 @@
 const url = import.meta.env.VITE_API_URL
 
 async function getUserByUsername(username) {
-  const response = await fetch(url + "users/username/" + username);
+  const response = await fetch(url + "users/username/" + username, {
+    headers: {
+      'Authorization': "Bearer " + localStorage.getItem('Token')
+    }
+  });
   if (response.ok) {
     const json = await response.json();
     return json;
@@ -11,7 +15,11 @@ async function getUserByUsername(username) {
 }
 
 async function getUserByEmail(email) {
-    const response = await fetch(url + "users/email/" + email);
+    const response = await fetch(url + "users/email/" + email, {
+      headers: {
+        'Authorization': "Bearer " + localStorage.getItem('Token')
+      }
+    });
     if (response.ok) {
       const json = await response.json();
       return json;
@@ -37,7 +45,8 @@ async function createProfile(userId, stats) {
   const response = await fetch(url + "stats/" + userId.toString(), {
     method: 'POST', 
     headers: {
-      'Content-Type': 'application/json' 
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer " + localStorage.getItem('Token') 
     },
     body: JSON.stringify(stats)
   })
@@ -46,7 +55,11 @@ async function createProfile(userId, stats) {
 }
 
 async function getNamedExercisesByUserId (userId, exercise) {
-  const response = await fetch(url + "exercises/" + userId + "/" + exercise)
+  const response = await fetch(url + "exercises/" + userId + "/" + exercise, {
+    headers: {
+      'Authorization': "Bearer " + localStorage.getItem('Token')
+    }
+  })
   if (response.ok) {
     const json = await response.json();
     return json;
@@ -55,7 +68,11 @@ async function getNamedExercisesByUserId (userId, exercise) {
 }
 
 async function getAllExerciseNamesByUserId (userId) {
-  const response = await fetch(url + "exercises/" + userId)
+  const response = await fetch(url + "exercises/" + userId, {
+    headers: {
+      'Authorization': "Bearer " + localStorage.getItem('Token')
+    }
+  })
   if (response.ok) {
     const json = await response.json();
     return json;
@@ -67,7 +84,8 @@ async function submitWorkout (userId, workout) {
   const response = await fetch(url + "workouts/" + userId, {
     method: 'POST', 
     headers: {
-      'Content-Type': 'application/json' 
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer " + localStorage.getItem('Token')
     },
     body: JSON.stringify(workout)
   })
@@ -80,7 +98,11 @@ async function submitWorkout (userId, workout) {
 }
 
 async function getWorkoutsByIdPaginated(userId, pageNo, perPage) {
-  const response = await fetch(url + "workouts/paginated/" + userId + `?perPage=${perPage}&pageNo=${pageNo}`)
+  const response = await fetch(url + "workouts/paginated/" + userId + `?perPage=${perPage}&pageNo=${pageNo}`, {
+    headers: {
+      'Authorization': "Bearer " + localStorage.getItem('Token')
+    }
+  })
 
   if (response.ok) {
     const json = await response.json();
