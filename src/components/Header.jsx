@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect, useContext } from "react";
 import { UserContext } from "../context/UserContext.jsx";
 
-export default function Header({ setMode }) {
+export default function Header({ setMode, setSignedIn }) {
   const [avatarClicked, setAvatarClicked] = useState(false)
   const location = useLocation().pathname
   const dropdownRef = useRef(null);
@@ -32,13 +32,14 @@ export default function Header({ setMode }) {
     function handleLogOutClick() {
        setAvatarClicked(false)
        localStorage.removeItem('Token')
+       setSignedIn(false)
        navigate("/sign-in")
     }
 
   return (
     <header className="min-h-40 flex flex-row place-items-center justify-between px-10">
       <img className="h-logo w-logo ml-10" src="/svg/logo.svg"></img>
-        {location === "/dashboard" && 
+        {location === "/dashboard/" && 
         <div className="flex flex-row place-items-center gap-2">
         <ToggleButton button1={"Workout"} button2={"Stats"} inHeader={true} setMode={setMode} />
         <div ref={dropdownRef}>

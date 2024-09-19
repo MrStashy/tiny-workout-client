@@ -63,7 +63,7 @@ export default function CurrentWorkoutCard() {
       </ul>
       <footer className="flex flex-col cursor-pointer gap-2 text-center">
         <div onClick={handleAddNewExerciseClick} className="flex flex-col">
-          <img className="h-8" src="svg/add-square-svg-orange.svg" />
+          <img className="h-8" src="/svg/add-square-svg-orange.svg" />
           <p className="text-tiny-orange">New Exercise</p>
         </div>
         <button

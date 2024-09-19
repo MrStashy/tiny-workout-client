@@ -53,7 +53,7 @@ export default function SetBar({ set, handleDeleteSetClick, setNumber }) {
       <img
         onClick={() => handleDeleteSetClick(set)}
         className="h-5 place-self-center cursor-pointer"
-        src="svg/delete-1-svgrepo-com.svg"
+        src="/svg/delete-1-svgrepo-com.svg"
       />
     </div>
   );

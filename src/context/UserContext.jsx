@@ -4,7 +4,7 @@ import { jwtDecode } from "jwt-decode";
 
 const UserContext = createContext();
 
-function UserProvider({ children, justRegistered }) {
+function UserProvider({ children, justRegistered, signedIn }) {
   const [currentUser, setCurrentUser] = useState({});
   const [loading, setLoading] = useState(true);
 
@@ -13,11 +13,12 @@ function UserProvider({ children, justRegistered }) {
 
     if (token) {
       const decodedToken = jwtDecode(token);
+      console.log(decodedToken)
       setCurrentUser(decodedToken);
     }
 
     setLoading(false)
-  }, [justRegistered]);
+  }, [justRegistered, signedIn]);
 
   return (
     <UserContext.Provider value={{ currentUser, setCurrentUser, loading }}>
