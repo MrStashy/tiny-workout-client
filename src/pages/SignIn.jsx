@@ -36,7 +36,6 @@ export default function SignIn({setToken}) {
    
     try {
       await validateSignInCredentials(formData.email, formData.password)
-      console.log(formData)
       const token = await login(formData)
       setToken(token)
       navigate("/dashboard")
