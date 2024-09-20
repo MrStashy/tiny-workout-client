@@ -34,6 +34,8 @@ export default function Header({ setMode }) {
     navigate("/sign-in");
   }
 
+  console.log(location)
+
   return (
 <header className="min-h-40 flex flex-row place-items-center justify-between px-10">
     <img className="h-logo w-logo ml-10" src="/svg/logo.svg"></img>

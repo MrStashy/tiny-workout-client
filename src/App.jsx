@@ -13,6 +13,13 @@ function App() {
   const [token, setToken] = useState(null)
   const [mode, setMode] = useState("stats")
 
+  if (!token) {
+    const token = localStorage.getItem('Token')
+    if (token) {
+      setToken(token)
+    }
+  }
+
   return (
     <UserProvider justRegistered={justRegistered} token={token}>
       <div className="h-screen bg-app-bg bg-cover">
