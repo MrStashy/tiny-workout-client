@@ -3,7 +3,7 @@ import SignIn from "./pages/SignIn";
 import Register from "./pages/Register";
 import UserStats from "./pages/UserStats";
 import Dashboard from "./pages/Dashboard";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
 import { UserProvider } from "./context/UserContext";
 import { ProtectedRoute } from "./context/ProtectedRoute";
@@ -12,7 +12,6 @@ function App() {
   const [justRegistered, setJustRegistered] = useState(false);
   const [token, setToken] = useState(null)
   const [mode, setMode] = useState("stats")
-
 
   return (
     <UserProvider justRegistered={justRegistered} token={token}>
@@ -36,7 +35,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route path="*" element={<SignIn />} />
+            <Route path="*" element={<Navigate to="/sign-in"/>} />
           </Routes>
         </div>
       </div>

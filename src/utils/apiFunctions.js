@@ -125,7 +125,6 @@ async function login (userDetails) {
       }
 
       const { token } = await response.json()
-      localStorage.setItem('Token', token)
       return token
 }
 
