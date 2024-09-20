@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { validateSignInCredentials } from "../utils/validationFunctions/"
 import LoadingSpinner from "../components/LoadingSpinner";
 
-export default function SignIn({setToken}) {
+export default function SignIn(props) {
   const navigate = useNavigate()
   const [submitting, setSubmitting] = useState(false)
   const [formData, setFormData] = useState({
@@ -37,7 +37,7 @@ export default function SignIn({setToken}) {
     try {
       await validateSignInCredentials(formData.email, formData.password)
       const token = await login(formData)
-      setToken(token)
+      props.setToken(token)
       localStorage.setItem('Token', token)
       navigate('/dashboard')
     } catch(e) {
