@@ -16,7 +16,6 @@ export default function StatsWindow() {
   const [statsMode, setStatsMode] = useState("stats");
   const { currentUser } = useContext(UserContext);
 
-
   async function updateExerciseData() {
     const data = await getNamedExercisesByUserId(currentUser.id, selectedExercise);
     const { exercises } = data;
@@ -31,13 +30,13 @@ export default function StatsWindow() {
 
   useEffect(() => {
     updateExerciseNames();
-  }, []);
+  }, [currentUser]);
 
   useEffect(() => {
     if (exerciseNames.length > 0) {
       updateExerciseData();
     }
-  }, [selectedExercise]);
+  }, [selectedExercise, currentUser]);
 
   return (
     <main className="bg-white h-full mb-4 mx-8 rounded-xl flex flex-col items-center p-8 gap-4">
