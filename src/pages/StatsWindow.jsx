@@ -22,6 +22,7 @@ export default function StatsWindow() {
     setExerciseData(exercises);
   }
 
+
   async function updateExerciseNames() {
     const data = await getAllExerciseNamesByUserId(currentUser.id); 
     setExerciseNames(data.exercises);
@@ -29,6 +30,10 @@ export default function StatsWindow() {
   }
 
   useEffect(() => {
+    if(!currentUser.id) {
+      return
+    }
+   
     updateExerciseNames();
   }, [currentUser]);
 
@@ -37,6 +42,10 @@ export default function StatsWindow() {
       updateExerciseData();
     }
   }, [selectedExercise, currentUser]);
+
+  if (!currentUser) {
+    return(<p>Loading</p>)
+  }
 
   return (
     <main className="bg-white h-full mb-4 mx-8 rounded-xl flex flex-col items-center p-8 gap-4">

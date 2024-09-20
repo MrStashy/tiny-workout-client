@@ -1,14 +1,12 @@
 /* eslint-disable react/prop-types */
 import { createContext, useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
-import { useLocation } from "react-router-dom";
-
+import { useLocation } from 'react-router-dom'
 const UserContext = createContext();
 
-function UserProvider({ children, justRegistered, signedIn }) {
+function UserProvider({ children, justRegistered, token }) {
   const [currentUser, setCurrentUser] = useState({});
-  const location = useLocation();
-
+  const location = useLocation()
 
   useEffect(() => {
     const token = localStorage.getItem("Token");
@@ -16,9 +14,11 @@ function UserProvider({ children, justRegistered, signedIn }) {
     if (token) {
       const decodedToken = jwtDecode(token);
       setCurrentUser(decodedToken);
+      return
     }   
 
-  }, [justRegistered, signedIn, location]);
+    setCurrentUser({})
+  }, [justRegistered, location.pathname, token]);
 
   return (
     <UserContext.Provider value={{ currentUser }}>

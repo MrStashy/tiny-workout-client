@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import LoadingSpinner from "../components/LoadingSpinner";
 
 
-export default function UserDetails({setJustRegistered}) {
+export default function UserDetails() {
   const navigate = useNavigate()
   const [submitting, setSubmitting] = useState(false)
 
