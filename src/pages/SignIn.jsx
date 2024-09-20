@@ -33,12 +33,12 @@ export default function SignIn({setToken}) {
   async function onSubmit(e) {
     e.preventDefault();
     setSubmitting(true)
+    let token = ""
    
     try {
       await validateSignInCredentials(formData.email, formData.password)
-      const token = await login(formData)
+      token = await login(formData)
       setToken(token)
-      navigate('/dashboard')
     } catch(e) {
       const updatedInputs = inputs.map((input) => {
         if (e === "Log in failed") {
@@ -53,7 +53,9 @@ export default function SignIn({setToken}) {
       setInputs(updatedInputs);
     } 
       setSubmitting(false)
-      navigate('/dashboard')
+      if (token) {
+        navigate('/dashboard')
+      }
   }
 
   function onChange(e) {
