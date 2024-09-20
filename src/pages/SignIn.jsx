@@ -38,7 +38,9 @@ export default function SignIn({setToken}) {
       await validateSignInCredentials(formData.email, formData.password)
       const token = await login(formData)
       setToken(token)
-      navigate("/dashboard")
+      if (token) {
+        navigate('/dashboard')
+      }
     } catch(e) {
       const updatedInputs = inputs.map((input) => {
         if (e === "Log in failed") {
