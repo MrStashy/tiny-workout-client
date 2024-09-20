@@ -31,13 +31,13 @@ export default function Header({ setMode }) {
   function handleLogOutClick() {
     setAvatarClicked(false);
     localStorage.removeItem("Token");
-    navigate("/sign-in");
+    navigate("sign-in");
   }
 
   return (
 <header className="min-h-40 flex flex-row place-items-center justify-between px-10">
     <img className="h-logo w-logo ml-10" src="/svg/logo.svg"></img>
-    {location === "/dashboard/" && 
+    {location === "/dashboard" && 
     <div className="flex flex-row place-items-center gap-2">
       <ToggleButton button1={"Workout"} button2={"Stats"} inHeader={true} setMode={setMode} />
       <div ref={dropdownRef} className="relative"> 

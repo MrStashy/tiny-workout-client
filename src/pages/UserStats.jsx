@@ -61,7 +61,7 @@ export default function UserDetails() {
         return
       }
       
-      navigate("/dashboard/")
+      navigate("/dashboard")
     } catch (e) {
       const updatedInputs = inputs.map((input) => {
         if (e[input.name]) {

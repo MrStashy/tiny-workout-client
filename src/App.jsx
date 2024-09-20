@@ -26,16 +26,16 @@ function App() {
         <div className="h-screen flex flex-col absolute inset-0 bg-gradient-to-b from-tiny-orange/30 to-transparent  font-inter">
           <Header setMode={setMode} />
           <Routes>
-            <Route path="/sign-in" element={<SignIn setToken={setToken} />} />
+            <Route path="sign-in" element={<SignIn setToken={setToken} />} />
             <Route
-              path="/register"
+              path="register"
               element={<Register setJustRegistered={setJustRegistered} />}
             />
             {justRegistered && (
-              <Route path="/user-details" element={<UserStats setJustRegistered={setJustRegistered}/>} />
+              <Route path="user-details" element={<UserStats setJustRegistered={setJustRegistered}/>} />
             )}
             <Route
-              path="/dashboard"
+              path="dashboard"
               element={
                 <ProtectedRoute token={token} >
                   <Dashboard mode={mode}/>

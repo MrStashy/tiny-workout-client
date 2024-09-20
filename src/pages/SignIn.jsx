@@ -33,11 +33,13 @@ export default function SignIn({setToken}) {
   async function onSubmit(e) {
     e.preventDefault();
     setSubmitting(true)
+   
     try {
       await validateSignInCredentials(formData.email, formData.password)
+      console.log(formData)
       const token = await login(formData)
       setToken(token)
-      navigate("/dashboard/")
+      navigate("/dashboard")
     } catch(e) {
       const updatedInputs = inputs.map((input) => {
         if (e === "Log in failed") {
