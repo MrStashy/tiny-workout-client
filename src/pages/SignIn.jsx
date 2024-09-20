@@ -41,6 +41,7 @@ export default function SignIn({setToken}) {
       localStorage.setItem('Token', token)
       navigate('/dashboard')
     } catch(e) {
+      console.log("Caught error signing in:", e)
       const updatedInputs = inputs.map((input) => {
         if (e === "Log in failed") {
           return { ...input, error: "Email or password incorrect" }
