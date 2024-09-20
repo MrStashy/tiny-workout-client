@@ -37,7 +37,7 @@ export default function SignIn({setToken}) {
     try {
       await validateSignInCredentials(formData.email, formData.password)
       const token = await login(formData)
-      await setToken(token)
+      setToken(token)
       localStorage.setItem('Token', token)
       navigate('/dashboard')
     } catch(e) {
