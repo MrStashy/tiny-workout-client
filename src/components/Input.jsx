@@ -31,7 +31,7 @@ export default function Input({
         {constraints?.length > 0 && (
           <ul className="absolute text-xs text-black rounded -right-40 -top-2 p-1 bg-white/60 ">
             {constraints.map((constraint) => {
-              return <li>{constraint}</li>;
+              return <li key={constraint}>{constraint}</li>;
             })}
           </ul>
         )}

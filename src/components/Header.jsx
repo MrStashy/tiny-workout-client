@@ -3,14 +3,13 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect, useContext } from "react";
 import { UserContext } from "../context/UserContext.jsx";
 
-export default function Header({ setMode, setSignedIn }) {
+export default function Header({ setMode }) {
   const [avatarClicked, setAvatarClicked] = useState(false)
   const location = useLocation().pathname
   const dropdownRef = useRef(null);
   const navigate = useNavigate()
 
   const username = useContext(UserContext).currentUser.username
-
  
    function handleClickOutside (event) {
      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -32,8 +31,7 @@ export default function Header({ setMode, setSignedIn }) {
     function handleLogOutClick() {
        setAvatarClicked(false)
        localStorage.removeItem('Token')
-       setSignedIn(false)
-       navigate("/sign-in")
+       navigate('/sign-in')
     }
 
   return (

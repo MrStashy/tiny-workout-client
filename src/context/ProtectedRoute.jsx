@@ -1,17 +1,13 @@
 /* eslint-disable react/prop-types */
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "./UserContext";
 import { Navigate } from "react-router-dom";
 
-export function ProtectedRoute({ children }) {
-  const { currentUser, loading } = useContext(UserContext);
+export function ProtectedRoute({ children, token }) {
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   return (
-    currentUser && Object.keys(currentUser).length > 0
+    token
       ? children
       : <Navigate to="/sign-in" />
   );
