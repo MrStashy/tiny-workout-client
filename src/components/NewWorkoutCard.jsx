@@ -67,7 +67,7 @@ export default function CurrentWorkoutCard() {
           <p className="text-tiny-orange">New Exercise</p>
         </div>
         <button
-          className="bg-tiny-orange w-login-form h-login-form text-white font-semibold mt-6 rounded-full"
+          className="bg-tiny-orange w-auto h-login-form text-white font-semibold mt-6 rounded-full"
           type="submit"
           onClick={handleSubmit}
         >
