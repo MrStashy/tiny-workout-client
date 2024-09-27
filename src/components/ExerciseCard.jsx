@@ -37,7 +37,7 @@ function handleDeleteSetClick(incomingSet) {
             />
             <img onClick={() => handleDeleteExerciseClick(exercise)} className="h-8 absolute top-0 right-0 cursor-pointer" src="/svg/delete-1-svgrepo-com.svg" />
         </header>
-        <section className="flex flex-col gap-2">
+        <section className="flex flex-col gap-2 w-full place-items-center">
             {currentSets.length > 0 && 
                 currentSets.map((set) => {
                     return (
